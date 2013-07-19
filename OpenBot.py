@@ -47,7 +47,7 @@ class oBot:
 									 break
 							if not prevComment:
 								submission.add_comment(message)
-						pdb.set_trace()
+						#pdb.set_trace()
 					#print submission.id
 					#print submission.url
 					#print submission.title
@@ -82,6 +82,6 @@ class oBot:
 		sys.exit(0)
 
 if __name__ == "__main__":
-	bot = oBot('OpenBot', 'linnit')
+	bot = oBot('OpenBot')
 	signal.signal(signal.SIGINT, bot.signal_handler)
 	bot.run()
