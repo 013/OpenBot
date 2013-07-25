@@ -97,10 +97,6 @@ class oBot:
 			#URL has .nyud.net
 			return False
 
-
-
-
-
 if __name__ == "__main__":
 	bot = oBot('OpenBot')
 	signal.signal(signal.SIGINT, bot.signal_handler)
