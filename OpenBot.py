@@ -6,6 +6,7 @@ import praw
 import signal
 from time import gmtime, strftime, sleep
 import pdb
+from urlparse import urlparse
 
 class oBot:
 	def __init__(self, username=None, password=None):
@@ -80,6 +81,21 @@ class oBot:
 		print "Saving results and exiting... :)"
 		self.createLog()
 		sys.exit(0)
+
+	def nyud_appender(self, url):
+		"""
+		Checks if a given submission URL ends with .nyud.net, if not it adds it.
+		Returns "False" if URL already is cached and there is no need to post a comment.
+
+		This function requires urlparse
+		"""
+		if not "nyud.net" in url:
+			parsed = urlparse(url)
+			cachedURL = parsed.netloc + ".nyud.net" + parsed.path + parsed.params + parsed.query + parsed.fragment
+			return cachedURL
+		else:
+			#URL has .nyud.net
+			return False
 
 if __name__ == "__main__":
 	bot = oBot('OpenBot')
